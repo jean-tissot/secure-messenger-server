@@ -4,6 +4,7 @@
 [<img src="schema_bdd.jpg" width="400"/>](schema_bdd.jpg)
 ### User
 - **id (int)**: numéro identifiant l'utilisateur de manière unique
+- pseudo (String): pseudonyme  de l'utilisateur
 - lastTimeOnLine (DateTime): dernière fois où le user était en ligne
 - groupList (groupe[]): liste des groupes auquel il appartient
 
@@ -36,7 +37,7 @@
 - type (String): type du contenu binaire
 - content (byte[]): contenu binaire
 
-### Amis (table d'association)
+### Fiends (table d'association)
 - **user1_id** (int)
 - **user2_id** (int)
 
