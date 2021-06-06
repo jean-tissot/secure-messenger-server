@@ -19,10 +19,17 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// application web
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// Java persistance API (couche d'accès aux données basée sur Spring Data JPA)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// Base de donnée postgresql utilisée
+	runtimeOnly 'org.postgresql:postgresql'
+	
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// Tests unitaires
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

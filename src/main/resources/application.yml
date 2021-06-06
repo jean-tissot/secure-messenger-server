@@ -1,0 +1,7 @@
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/secure_messenger_db
+    username: secure_messenger_app
+    password: a_changer
