@@ -1,12 +1,14 @@
 package com.messenger.secure.metier.services;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
+import com.messenger.secure.metier.dto.Group;
 import com.messenger.secure.metier.dto.User;
+import com.messenger.secure.metier.repository.UserGroupRestRepository;
 import com.messenger.secure.metier.repository.UserRestRepository;
 import com.messenger.secure.utils.Utils;
 
@@ -18,6 +20,8 @@ public class UserService {
 
     @Resource
     private UserRestRepository userRestRepository;
+    @Resource
+    private UserGroupRestRepository userGroupRestRepository;
 
     public User getUser(int userId) {
         Optional<User> user = userRestRepository.findById(userId);
@@ -36,7 +40,9 @@ public class UserService {
     }
 
     // Rejeter une demande d'ami ou supprimer un ami
-    public void removeFriend(User user, User friend) {
+    public void removeFriend(int userId, int friendId) {
+        User user = getUser(userId);
+        User friend = getUser(friendId);
         List<User> friends = user.getFriends();
         List<User> friendOf = user.getFriendOf();
         while (friends.contains(friend)) {
@@ -65,6 +71,10 @@ public class UserService {
         return Utils.intersect(user.getFriends(), user.getFriendOf());
     }
 
-
+    public List<Group> getGroups(int userId) {
+        return getUser(userId).getUserGroups().stream()
+            .map(userGroup -> userGroup.getGroup())
+            .collect(Collectors.toList());
+    }
 
 }

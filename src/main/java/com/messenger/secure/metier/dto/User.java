@@ -30,7 +30,7 @@ public class User implements Serializable {
     protected int id;
 
     @Setter
-    @Column(name = "pseudo")
+    @Column(name = "pseudo", nullable = false)
     protected String pseudo;
 
     @Setter
@@ -56,7 +56,7 @@ public class User implements Serializable {
     protected List<User> friendOf = new ArrayList<>();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "group")
+    @OneToMany(mappedBy = "user")
     protected List<UserGroup> userGroups = new ArrayList<>();
 
     @JsonIgnore
