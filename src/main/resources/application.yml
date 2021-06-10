@@ -1,3 +1,7 @@
+server:
+  port: 7779
+  servlet:
+    context-path: /api
 
 spring:
   datasource:
